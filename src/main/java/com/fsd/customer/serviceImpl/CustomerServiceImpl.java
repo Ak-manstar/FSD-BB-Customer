@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    CustomerDao dao;
+    CustomerDao customerDao;
 
     @Autowired
     TemplateClient client;
@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
     public SignUpResponse userSignUp(UserSignUpRequest userSignUpRequest) {
         String userId= userSignUpRequest.getRole().substring(0,2)+CustomerHashUtils.getId();
         UserEntity userEntity=new UserEntity(userId,userSignUpRequest.getUserName(),userSignUpRequest.getPassword(),userSignUpRequest.getEmail(),userSignUpRequest.getMobile(),userSignUpRequest.getRole());
-        if(null!=dao.saveUser(userEntity)) {
+        if(null!= customerDao.saveUser(userEntity)) {
             return new SignUpResponse(userId, "Registered Successfully");
         }else {
             throw new CustomerException(new ErrorBean("CU_001","Not Registered"), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -37,11 +37,16 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public String userLogin(UserLoginRequest userLoginRequest) {
-        return "";
+        UserEntity userEntity=customerDao.getUserByMobile(userLoginRequest.getMobile());
+        if(userEntity.getRole().equals(userLoginRequest.getRole())&&
+                userEntity.getPassword().equals(userLoginRequest.getPassword()))
+            return "Login Successful";
+        else
+            return "Login Failed";
     }
 
     @Override
-    public UserSignUpRequest getUserDetails(String mobile) {
-        return null;
+    public UserEntity getUserDetails(String userId) {
+        return customerDao.getUserbyUserId(userId);
     }
 }

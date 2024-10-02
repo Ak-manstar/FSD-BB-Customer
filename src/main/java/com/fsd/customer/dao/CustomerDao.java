@@ -8,6 +8,7 @@ public interface CustomerDao {
 
     //methods to declare crud operations
 
-    UserEntity getUserbyMobile(Long mobile);
+    UserEntity getUserbyUserId(String userId);
     UserEntity saveUser(UserEntity userEntity);
+    UserEntity getUserByMobile(Long mobile);
 }

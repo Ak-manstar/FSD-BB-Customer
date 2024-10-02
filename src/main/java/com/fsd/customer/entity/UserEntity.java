@@ -14,13 +14,15 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "user_id")
+    @Column(name = "user_id",unique = true)
     private String userId;
-    @Column(name = "user_name",unique = true)
+    @Column(name = "user_name")
     private String userName;
     @JsonIgnore
     private String password;
+    @Column(name = "email",unique = true)
     private String email;
+    @Column(name = "mobile",unique = true)
     private Long mobile;
     private String role;
     @CreationTimestamp

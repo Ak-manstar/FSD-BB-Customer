@@ -6,8 +6,6 @@ import com.fsd.customer.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public class CustomerDaolmpl implements CustomerDao {
 
@@ -16,12 +14,18 @@ public class CustomerDaolmpl implements CustomerDao {
 
 
     @Override
-    public UserEntity getUserbyMobile(Long mobile) {
-        return repository.findByMobileAndIsActive(mobile,1);
+    public UserEntity getUserbyUserId(String userId) {
+        return repository.findByUserIdAndIsActive(userId,1);
     }
 
     @Override
     public UserEntity saveUser(UserEntity userEntity) {
+
         return repository.saveAndFlush(userEntity);
+    }
+
+    @Override
+    public UserEntity getUserByMobile(Long mobile) {
+        return repository.findUserByMobileAndIsActive(mobile,1);
     }
 }
