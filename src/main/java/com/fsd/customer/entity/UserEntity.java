@@ -18,8 +18,10 @@ public class UserEntity {
     private String userId;
     @Column(name = "user_name")
     private String userName;
-    @JsonIgnore
+
+    @Column(name="password")
     private String password;
+
     @Column(name = "email",unique = true)
     private String email;
     @Column(name = "mobile",unique = true)

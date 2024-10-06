@@ -38,8 +38,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public String userLogin(UserLoginRequest userLoginRequest) {
         UserEntity userEntity=customerDao.getUserByMobile(userLoginRequest.getMobile());
-        if(userEntity.getRole().equals(userLoginRequest.getRole())&&
-                userEntity.getPassword().equals(userLoginRequest.getPassword()))
+        if(userEntity.getPassword().equals(userLoginRequest.getPassword()))
             return "Login Successful";
         else
             return "Login Failed";

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class UserSignUpRequest {
 
     private String userName;
-    @JsonIgnore
     private String password;
     private String email;
     private Long mobile;
