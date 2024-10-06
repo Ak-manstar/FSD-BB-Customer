@@ -21,7 +21,7 @@ public class CustomerDaolmpl implements CustomerDao {
     @Override
     public UserEntity saveUser(UserEntity userEntity) {
 
-        return repository.saveAndFlush(userEntity);
+        return repository.save(userEntity);
     }
 
     @Override
