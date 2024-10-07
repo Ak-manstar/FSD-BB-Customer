@@ -8,7 +8,6 @@ import java.util.List;
 public class UserSignUpRequest {
 
     private String userName;
-    @JsonIgnore
     private String password;
     private String email;
     private Long mobile;
