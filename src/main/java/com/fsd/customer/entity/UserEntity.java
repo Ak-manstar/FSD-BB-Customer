@@ -18,7 +18,6 @@ public class UserEntity {
     private String userId;
     @Column(name = "user_name")
     private String userName;
-
     @Column(name="password")
     private String password;
 
