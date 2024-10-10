@@ -24,7 +24,7 @@ public class CustomerController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<ResponseBean> getUserDetails(@RequestBody UserLoginRequest userLoginRequest){
+    public ResponseEntity<ResponseBean> userLogin(@RequestBody UserLoginRequest userLoginRequest){
         return new ResponseEntity<>(new ResponseBean(service.userLogin(userLoginRequest)), HttpStatus.OK);
     }
 

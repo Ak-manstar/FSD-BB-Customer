@@ -1,5 +1,6 @@
 package com.fsd.customer.service;
 
+import com.fsd.customer.bean.LoginResponse;
 import com.fsd.customer.bean.SignUpResponse;
 import com.fsd.customer.bean.UserLoginRequest;
 import com.fsd.customer.bean.UserSignUpRequest;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 public interface CustomerService {
 
     SignUpResponse userSignUp(UserSignUpRequest userSignUpRequest);
-    String userLogin(UserLoginRequest userLoginRequest);
+    LoginResponse userLogin(UserLoginRequest userLoginRequest);
     UserEntity getUserDetails(String userId);
 
 }
