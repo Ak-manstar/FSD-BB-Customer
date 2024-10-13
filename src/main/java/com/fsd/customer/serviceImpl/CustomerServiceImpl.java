@@ -43,15 +43,13 @@ public class CustomerServiceImpl implements CustomerService {
     public LoginResponse userLogin(UserLoginRequest userLoginRequest) {
         UserEntity userEntity=customerDao.getUserByMobile(userLoginRequest.getMobile());
         LoginResponse loginResponse=new LoginResponse();
-        String message;
         if(userEntity.getPassword().equals(userLoginRequest.getPassword())){
             loginResponse.setUserId(userEntity.getUserId());
             loginResponse.setRole(userEntity.getRole());
-            message="Login Successful";
+            loginResponse.setMessage("Login Successful");
         }
         else
-            message="Login Failed";
-        loginResponse.setMessage(message);
+            loginResponse.setMessage("Login Failed");
         return loginResponse;
     }
 
